@@ -191,25 +191,59 @@ while _D:
 yy='azertyuiopmlkjhgfdsqwxcvbn'
 def tll():
 	try:
-		n1=''.join(cc(yy)for i in range(rr(6,9)));n2=''.join(cc(yy)for i in range(rr(3,9)));host=''.join(cc(yy)for i in range(rr(15,30)));he3={_E:_G,_B:'ar-IQ,ar;q=0.9,en-IQ;q=0.8,en;q=0.7,en-US;q=0.6',_F:_M,_L:'1',_C:str(ggb())};res1=requests.get('https://accounts.google.com/signin/v2/usernamerecovery?flowName=GlifWebSignIn&flowEntry=ServiceLogin&hl=en-GB',headers=he3);tok=re.search('data-initial-setup-data="%.@.null,null,null,null,null,null,null,null,null,&quot;(.*?)&quot;,null,null,null,&quot;(.*?)&',res1.text).group(2);cookies={_N:host};headers={_O:_c,_E:_G,_B:_H,_F:_M,_L:'1',_P:_d,_Q:'https://accounts.google.com/signup/v2/createaccount?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&theme=mn',_C:ggb()};data={'f.req':f'["{tok}","{n1}","{n2}","{n1}","{n2}",0,0,null,null,"web-glif-signup",0,null,1,[],1]','deviceinfo':'[null,null,null,null,null,"NL",null,null,null,"GlifWebSignIn",null,[],null,null,null,null,2,null,0,1,"",null,null,2,2]'};response=requests.post('https://accounts.google.com/_/signup/validatepersonaldetails',cookies=cookies,headers=headers,data=data);tl=str(response.text).split('",null,"')[1].split('"')[0];host=response.cookies.get_dict()[_N]
+		n1=''.join(cc(yy)for i in range(rr(6,9)));n2=''.join(cc(yy)for i in range(rr(3,9)));host=''.join(cc(yy)for i in range(rr(15,30)));he3={_E:_G,_B:'ar-IQ,ar;q=0.9,en-IQ;q=0.8,en;q=0.7,en-US;q=0.6',_F:_M,_L:'1',_C:str(ggb())};res1=requests.get('https://accounts.google.com/signin/v2/usernamerecovery?flowName=GlifWebSignIn&flowEntry=ServiceLogin&hl=en-GB',headers=he3);
+		search = re.search('data-initial-setup-data="%.@.null,null,null,null,null,null,null,null,null,&quot;(.*?)&quot;,null,null,null,&quot;(.*?)&',res1.text)
+		if not search:
+			time.sleep(2)
+			return tll()
+		tok=search.group(2);cookies={_N:host};headers={_O:_c,_E:_G,_B:_H,_F:_M,_L:'1',_P:_d,_Q:'https://accounts.google.com/signup/v2/createaccount?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&theme=mn',_C:ggb()};data={'f.req':f'["{tok}","{n1}","{n2}","{n1}","{n2}",0,0,null,null,"web-glif-signup",0,null,1,[],1]','deviceinfo':'[null,null,null,null,null,"NL",null,null,null,"GlifWebSignIn",null,[],null,null,null,null,2,null,0,1,"",null,null,2,2]'};response=requests.post('https://accounts.google.com/_/signup/validatepersonaldetails',cookies=cookies,headers=headers,data=data);
+		if '",null,"' not in response.text:
+			time.sleep(2)
+			return tll()
+		tl=str(response.text).split('",null,"')[1].split('"')[0];host=response.cookies.get_dict()[_N]
 		with open(_R,'w')as f:f.write(f"{tl}//{host}\n")
-	except Exception as e:print(e);tll()
+	except Exception as e:
+		print(f"Error in tll: {e}")
+		time.sleep(2)
+		tll()
 tll()
 def Getaol():
 	try:
-		qq=requests.get('https://login.aol.com/account/create',headers={_C:_e,_B:_H});cookies=qq.cookies.get_dict();tm1=str(time.time()).split('.')[0];cookies.update({'gpp':'DBAA','gpp_sid':'-1','__gads':f"ID=c0M0fd00676f0ea1:T={tm1}:RT={tm1}:S=ALNI_MaEGaVTSG6nQFkSJ-RnxSZrF5q5XA",'__gpi':f"UID=00000cf0e8904e94:T={tm1}:RT={tm1}:S=ALNI_MYCzPrYn9967HtpDSITUe5Z4ZwGOQ",'cmp':f"t={tm1}&j=0&u=1---"});specData=qq.text.split('name="attrSetIndex">\n        <input type="hidden" value="')[1].split('" name="specData">')[0];specId=qq.text.split('name="browser-fp-data" id="browser-fp-data" value="" />\n        <input type="hidden" value="')[1].split('" name="specId">')[0];crumb=qq.text.split('name="cacheStored">\n        <input type="hidden" value="')[1].split('" name="crumb">')[0];sessionIndex=qq.text.split('"acrumb">\n        <input type="hidden" value="')[1].split('" name="sessionIndex">')[0];acrumb=qq.text.split('name="crumb">\n        <input type="hidden" value="')[1].split('" name="acrumb">')[0]
+		qq=requests.get('https://login.aol.com/account/create',headers={_C:_e,_B:_H});cookies=qq.cookies.get_dict();tm1=str(time.time()).split('.')[0];cookies.update({'gpp':'DBAA','gpp_sid':'-1','__gads':f"ID=c0M0fd00676f0ea1:T={tm1}:RT={tm1}:S=ALNI_MaEGaVTSG6nQFkSJ-RnxSZrF5q5XA",'__gpi':f"UID=00000cf0e8904e94:T={tm1}:RT={tm1}:S=ALNI_MYCzPrYn9967HtpDSITUe5Z4ZwGOQ",'cmp':f"t={tm1}&j=0&u=1---"});
+		parts = qq.text.split('name="attrSetIndex">\n        <input type="hidden" value="')
+		if len(parts) < 2: return Getaol()
+		specData=parts[1].split('" name="specData">')[0];
+		parts2 = qq.text.split('name="browser-fp-data" id="browser-fp-data" value="" />\n        <input type="hidden" value="')
+		if len(parts2) < 2: return Getaol()
+		specId=parts2[1].split('" name="specId">')[0];
+		parts3 = qq.text.split('name="cacheStored">\n        <input type="hidden" value="')
+		if len(parts3) < 2: return Getaol()
+		crumb=parts3[1].split('" name="crumb">')[0];
+		parts4 = qq.text.split('"acrumb">\n        <input type="hidden" value="')
+		if len(parts4) < 2: return Getaol()
+		sessionIndex=parts4[1].split('" name="sessionIndex">')[0];
+		parts5 = qq.text.split('name="crumb">\n        <input type="hidden" value="')
+		if len(parts5) < 2: return Getaol()
+		acrumb=parts5[1].split('" name="acrumb">')[0]
 		try:os.remove(_I);os.remove(_J)
 		except:pass
 		with open(_I,'a')as t:t.write(f"{specData}Π{specId}Π{crumb}Π{sessionIndex}Π{acrumb}\n")
 		with open(_J,'a')as g:g.write(str(cookies)+'\n')
-	except Exception as e:print(e);Getaol()
+	except Exception as e:
+		print(f"Error in Getaol: {e}")
+		time.sleep(2)
+		Getaol()
 Getaol()
 def check_gmail(email):
 	global bademail,hits
 	try:
 		if _A in email:email=str(email).split(_A)[0]
-		try:o=open(_R,'r').read().splitlines()[0]
-		except:o=open(_R,'r').read().splitlines()[0]
+		try:
+			content = open(_R,'r').read().splitlines()
+			if not content: return
+			o=content[0]
+		except:
+			return
 		tl,host=o.split('//');cookies={_N:host};headers={_O:_c,_E:_G,_B:_H,_F:_M,_L:'1',_P:_d,_Q:f"https://accounts.google.com/signup/v2/createusername?service=mail&continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&TL={tl}",_C:ggb()};params={'TL':tl};data=f"continue=https%3A%2F%2Fmail.google.com%2Fmail%2Fu%2F0%2F&ddm=0&flowEntry=SignUp&service=mail&theme=mn&f.req=%5B%22TL%3A{tl}%22%2C%22{email}%22%2C0%2C0%2C1%2Cnull%2C0%2C5167%5D&azt=AFoagUUtRlvV928oS9O7F6eeI4dCO2r1ig%3A1712322460888&cookiesDisabled=false&deviceinfo=%5Bnull%2Cnull%2Cnull%2Cnull%2Cnull%2C%22NL%22%2Cnull%2Cnull%2Cnull%2C%22GlifWebSignIn%22%2Cnull%2C%5B%5D%2Cnull%2Cnull%2Cnull%2Cnull%2C2%2Cnull%2C0%2C1%2C%22%22%2Cnull%2Cnull%2C2%2C2%5D&gmscoreversion=undefined&flowName=GlifWebSignIn&";response=pp('https://accounts.google.com/_/signup/usernameavailability',params=params,cookies=cookies,headers=headers,data=data)
 		if'"gf.uar",1'in str(response.text):
 			hits+=1;pppp()
@@ -270,7 +304,7 @@ def InfoAcc(username,gg):
 ══════════════════════════════  
 $ 𝗛ɪᴛ 𝗖ᴏᴜɴᴛ ➟ {total}  
 $️ 𝗙ᴜʟʟ 𝗡ᴀᴍᴇ ➟ {full_name} 
-$ 𝗜ᴅ ➟ {id}   
+$ 𝗜ᴅ ➟ {Id}   
 $ 𝗨sᴇʀɴᴀᴍᴇ ➟ @{username}  
 $ 𝗙ᴏʟʟᴏᴡᴇʀs ➟ {fows}  
 $ 𝗙ᴏʟʟᴏᴡɪɴɢ ➟ {fowg}  
@@ -282,7 +316,7 @@ $ 𝗨ʀʟ ➟ (https://www.instagram.com/{username})
 $ 𝗠ᴇᴛᴀ 𝗘ɴᴀʙʟᴇ ➟ {meta}  
 $ 𝗕ᴜsɪɴᴇss 𝗔ᴄᴏᴜɴᴛ ➟ {bizz}  
 $ 𝗩ᴇʀɪғɪᴇᴅ ➟ {is_verified}  
-$ 𝗣ʀɪᴠᴀᴛᴇ ➟ {isPraise}  
+$ 𝗣ʀɪ𝗩ᴀᴛᴇ ➟ {isPraise}  
 تـم فك من اراس @W4_M4 - ARAS
 قناتي : https://t.me/pytho2n
 """
